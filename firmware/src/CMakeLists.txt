@@ -2,10 +2,12 @@ add_executable(rppico_scope_fw
     main.c
     protocol_v1_crc.c
     protocol_engine.c
+    usb_descriptors.c
 )
 
 target_include_directories(rppico_scope_fw PRIVATE
     ${CMAKE_SOURCE_DIR}/../protocol/include
+    ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 target_compile_definitions(rppico_scope_fw PRIVATE
@@ -21,6 +23,7 @@ target_link_libraries(rppico_scope_fw
     hardware_dma
     hardware_pio
     hardware_pwm
+    tinyusb_device
 )
 
 # USB console on by default for bring-up logs.
